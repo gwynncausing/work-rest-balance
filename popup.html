@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work-Rest Balance</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .status {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .status-badge.active {
+      background: #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    .info {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 0.9em;
+    }
+
+    .time-display {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+      color: #667eea;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button.primary {
+      background: #10b981;
+      color: white;
+    }
+
+    button.danger {
+      background: #ef4444;
+      color: white;
+    }
+
+    button.secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .settings-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .settings-link a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9em;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .settings-link a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌟 Work-Rest Balance</h1>
+  
+  <div class="section status">
+    <div id="status-badge" class="status-badge">Loading...</div>
+  </div>
+
+  <div class="section">
+    <div id="break-info" class="info">
+      <div id="next-break-container" class="hidden">
+        <div>Next break in:</div>
+        <div id="next-break-time" class="time-display">--:--</div>
+      </div>
+      <div id="break-active-container" class="hidden">
+        <div>Break ends in:</div>
+        <div id="break-remaining-time" class="time-display">--:--</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <button id="start-break-btn" class="primary">Start Break Now</button>
+    <button id="stop-break-btn" class="danger hidden">Stop Break</button>
+    <button id="start-schedule-btn" class="secondary">Start Schedule</button>
+    <button id="stop-schedule-btn" class="secondary hidden">Stop Schedule</button>
+  </div>
+
+  <div class="settings-link">
+    <a href="#" id="settings-link">⚙️ Settings</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
